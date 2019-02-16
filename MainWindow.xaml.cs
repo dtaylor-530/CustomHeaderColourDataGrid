@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace WpfCustomHeaderGrid {
+namespace CustomHeaderColourDataGrid {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();

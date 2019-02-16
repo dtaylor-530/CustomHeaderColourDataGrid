@@ -1,22 +1,26 @@
-﻿using System;
+﻿using Microsoft.Xaml.Behaviors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Shapes;
 using Xceed.Wpf.Toolkit;
 
-namespace WpfCustomHeaderGrid
+namespace CustomHeaderColourDataGrid
 {
-    public class CustomCommand : ICommand
+    //Transfer Colour Command
+    public class TransferColourCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
-        public  bool CanExecute()
+        public bool CanExecute()
         {
             return true;
         }
@@ -29,8 +33,12 @@ namespace WpfCustomHeaderGrid
 
         public void Execute(object parameter)
         {
-            Tuple<Control, ListBox> t = (parameter as Tuple<Control, ListBox>);
-            (t.Item1).Background = (((t.Item2 as ListBox).SelectedItem as ListBoxItem).Content as Ellipse).Fill;
+            ControlMatchCommandBehavior behavior = parameter as ControlMatchCommandBehavior;
+
+            var yt = (behavior.ListBox.SelectedItem as ListBoxItem).Content as RestrictedEllipse;
+
+             (behavior.ContentTwo).Background = yt.GetFill((behavior.ContentTwo).Background);
+            
         }
     }
 }

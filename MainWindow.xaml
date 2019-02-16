@@ -1,102 +1,25 @@
-﻿<Window x:Class="WpfCustomHeaderGrid.MainWindow"
+﻿<Window x:Class="CustomHeaderColourDataGrid.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:WpfCustomHeaderGrid"
-xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:CustomHeaderColourDataGrid"
+
         Title="MainWindow" Height="350" Width="525">
 
     <Window.Resources>
         <ResourceDictionary>
-            <!--Brushes-->
-            <!--Light brush, to highlight.-->
-            <LinearGradientBrush x:Key="lightBrushBack" EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#7EFFFFFF" Offset="0"/>
-                <GradientStop Color="#03FFFFFF" Offset=".4"/>
-                <GradientStop Color="#00030000" Offset=".5"/>
-                <GradientStop Color="#0AFFFFFF" Offset=".55"/>
-                <GradientStop Color="#7EFFFFFF" Offset="1"/>
-            </LinearGradientBrush>
-            <!--Normal brush, little darker than light brush.-->
-            <LinearGradientBrush x:Key="normalBrushBack" EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#7EF0F0F0" Offset="0"/>
-                <GradientStop Color="#03FFFFFF" Offset=".4"/>
-                <GradientStop Color="#00030000" Offset=".5"/>
-                <GradientStop Color="#0AFFFFFF" Offset=".55"/>
-                <GradientStop Color="#3EFFFFFF" Offset="1"/>
-            </LinearGradientBrush>
-
-            <!--Custom Button Styling-->
-            <Style x:Key="RectPlainButton" TargetType="{x:Type xctk:SplitButton}">
-                <Setter Property="SnapsToDevicePixels" Value="True"/>
-                <Setter Property="OverridesDefaultStyle" Value="True"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type xctk:SplitButton}">
-                            <Grid Background="{TemplateBinding Background}">
-                                <Border x:Name="border" BorderThickness="1" BorderBrush="Transparent" />
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                <Border x:Name="glow" Opacity="0" HorizontalAlignment="Stretch" CornerRadius="4" Background="{StaticResource lightBrushBack}" />
-                            </Grid>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="glow" Property="Opacity" Value="1" />
-                                    <Setter TargetName="border" Property="BorderBrush" Value="#FFFFFFFF" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
-            <Style TargetType="Ellipse" >
-                <Setter Property="Height" Value="40"></Setter>
-                <Setter Property="Width" Value="40"></Setter>
-            </Style>
-            <ListBox x:Key="aa">
-                <ListBoxItem>
-                    <Ellipse Fill="Aqua" ></Ellipse>
-                </ListBoxItem>
-                <ListBoxItem>
-                    <Ellipse Fill="Red" ></Ellipse>
-                </ListBoxItem>
-                <ListBoxItem>
-                    <Ellipse Fill="Plum" ></Ellipse>
-                </ListBoxItem>
-                <ListBoxItem>
-                    <Ellipse Fill="LightCyan" ></Ellipse>
-                </ListBoxItem>
-            </ListBox>
-
-            <local:CustomCommand x:Key="ca"></local:CustomCommand>
+       
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/SplitButtonColumnHeaderStyle.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
-
     </Window.Resources>
 
-    <Grid>
-        <DataGrid x:Name="dataGrid" RowBackground="Transparent"  CanUserSortColumns="False" ColumnWidth="*">
-            <DataGrid.Resources>
+    <DockPanel>
+        <local:ColourListBox DockPanel.Dock="Left">
+            
+        </local:ColourListBox>
+        <DataGrid x:Name="dataGrid" RowBackground="Transparent"  CanUserSortColumns="False" ColumnWidth="*" ColumnHeaderStyle="{StaticResource SplitButtonColumnHeaderStyle}">
+        </DataGrid >
 
-                <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" x:Shared="False" >
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
-                                <xctk:SplitButton x:Name="PART_DropDown" Grid.Column="1"  Background="{TemplateBinding Background}"
-                                                            BorderBrush="{TemplateBinding Foreground}"
-                                                            Foreground="{TemplateBinding Foreground}"
-                                                  Content="{TemplateBinding Content}"                                                  >
-                                    <i:Interaction.Behaviors>
-                                        <local:DropDownButtonColourSelectionBehavior  Content="{StaticResource aa}"  Command="{StaticResource ca}" Parent="{Binding RelativeSource={RelativeSource AncestorType=DataGridColumnHeader}}"></local:DropDownButtonColourSelectionBehavior>
-                                    </i:Interaction.Behaviors>
-                                </xctk:SplitButton>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </DataGrid.Resources>
-        </DataGrid>
-
-    </Grid>
+    </DockPanel>
 </Window>
