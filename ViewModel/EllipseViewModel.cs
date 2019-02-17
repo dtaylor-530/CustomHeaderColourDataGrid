@@ -9,19 +9,13 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace CustomHeaderColourDataGrid
+namespace CustomHeaderColourDataGrid.DemoApp
 {
 
 
 
-    public class EllipseViewModelBase : DependencyObject //: INotifyPropertyChanged
-    {
 
-        public object Fill { get; set; }
-
-    }
-
-    public class EllipseViewModel : EllipseViewModelBase //: INotifyPropertyChanged
+    public class EllipseViewModel : EllipseViewModelBase 
     {
         static int number = 1;
         public static int Number { get => number; set { number = value; RaisePropertyChanged(); } }
@@ -40,7 +34,7 @@ namespace CustomHeaderColourDataGrid
 
     }
 
-    public class EllipseViewModel2 : EllipseViewModelBase //: INotifyPropertyChanged
+    public class EllipseViewModel2 : EllipseViewModelBase 
     {
         static int number = 1;
         public static int Number { get => number; set { number = value; RaisePropertyChanged(); } }
@@ -60,7 +54,7 @@ namespace CustomHeaderColourDataGrid
 
 
 
-    public class EllipseViewModel3 : EllipseViewModelBase //: INotifyPropertyChanged
+    public class EllipseViewModel3 : EllipseViewModelBase 
     {
         static int number = 2;
         public static int Number { get => number; set { number = value; RaisePropertyChanged(); } }

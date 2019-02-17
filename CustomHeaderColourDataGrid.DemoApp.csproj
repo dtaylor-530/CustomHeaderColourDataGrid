@@ -7,8 +7,8 @@
     <ProjectGuid>{DF310DCD-C4CD-4CE5-A22D-D7F16D6424FF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CustomHeaderColourDataGrid</RootNamespace>
-    <AssemblyName>CustomHeaderColourDataGrid</AssemblyName>
+    <RootNamespace>CustomHeaderColourDataGrid.DemoApp</RootNamespace>
+    <AssemblyName>CustomHeaderColourDataGrid.DemoApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -79,18 +79,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Behavior\EventCommandBehavior.cs" />
-    <Compile Include="Command\FillUpdateCommand.cs" />
-    <Compile Include="Control\ColourListBox.xaml.cs">
+    <Compile Include="View\ColourListBox.xaml.cs">
       <DependentUpon>ColourListBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Command\ColourTransferCommand.cs" />
-    <Compile Include="Control\RestrictedEllipse.cs" />
+    <Compile Include="ViewModel\DataRow.cs" />
     <Compile Include="ViewModel\EllipseViewModel.cs" />
     <Compile Include="ViewModel\ListBoxViewModel.cs" />
-    <Page Include="Control\ColourListBox.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="View\ColourListBox.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -100,25 +97,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Behavior\ListBoxSelectionChangedBehavior.cs" />
-    <Compile Include="Converter\Converter.cs" />
-    <Compile Include="EventArgs\EllipseEventArgs.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Themes\RestrictedEllipse.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\SplitButtonColumnHeaderStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -147,6 +129,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomHeaderColourDataGrid\CustomHeaderColourDataGrid.csproj">
+      <Project>{12d34e8b-00c6-4b54-a5d0-d0ca97b8a8f3}</Project>
+      <Name>CustomHeaderColourDataGrid</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

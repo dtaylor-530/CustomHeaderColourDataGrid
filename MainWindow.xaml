@@ -1,25 +1,27 @@
-﻿<Window x:Class="CustomHeaderColourDataGrid.MainWindow"
+﻿<Window x:Class="CustomHeaderColourDataGrid.DemoApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:CustomHeaderColourDataGrid"
-
+xmlns:custom="clr-namespace:CustomHeaderColourDataGrid;assembly=CustomHeaderColourDataGrid"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         Title="MainWindow" Height="350" Width="525">
 
     <Window.Resources>
         <ResourceDictionary>
-       
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/SplitButtonColumnHeaderStyle.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
+      
+            <local:ColourListBox x:Key="lbox"></local:ColourListBox>
         </ResourceDictionary>
     </Window.Resources>
 
+    
     <DockPanel>
-        <local:ColourListBox DockPanel.Dock="Left">
-            
-        </local:ColourListBox>
-        <DataGrid x:Name="dataGrid" RowBackground="Transparent"  CanUserSortColumns="False" ColumnWidth="*" ColumnHeaderStyle="{StaticResource SplitButtonColumnHeaderStyle}">
-        </DataGrid >
+        <local:ColourListBox DockPanel.Dock="Left"/>
 
+        <custom:DataGridEx  DropDownContent="{StaticResource lbox}"  x:Name="dataGrid" RowBackground="Transparent"  CanUserSortColumns="False" ColumnWidth="*"/>
+        <!--<DataGrid  x:Name="dataGrid" RowBackground="Transparent"  CanUserSortColumns="False" ColumnWidth="*">
+            <i:Interaction.Behaviors>
+                <custom:ExtendendHeadersBehavior DropDownContent="{StaticResource lbox}"></custom:ExtendendHeadersBehavior>
+            </i:Interaction.Behaviors>
+        </DataGrid>-->
     </DockPanel>
 </Window>

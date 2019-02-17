@@ -24,5 +24,10 @@ namespace CustomHeaderColourDataGrid
         {
             InitializeComponent();
         }
+
+        protected override DependencyObject GetContainerForItemOverride()
+        {
+            return new RestrictedEllipseItem();
+        }
     }
 }
