@@ -13,7 +13,7 @@ namespace CustomHeaderColourDataGrid
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return new Tuple<object,Brush>((value as EventArgs2).DataContext, (value as EventArgs2).OldValue);
+            return new Tuple<object,Brush>((value as FillChangedEventArgs).DataContext, (value as FillChangedEventArgs).OldValue);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

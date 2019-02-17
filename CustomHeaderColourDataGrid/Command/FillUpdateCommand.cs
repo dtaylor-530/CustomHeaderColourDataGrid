@@ -31,27 +31,27 @@ namespace CustomHeaderColourDataGrid
 
 
             int? index = null;
-            for (int i = 0; i < lbvm.ListViewModels.Count; i++)
-                if (type == lbvm.ListViewModels[i].GetType())
+            for (int i = 0; i < lbvm.EllipseViewModels.Count; i++)
+                if (type == lbvm.EllipseViewModels[i].GetType())
                     index = i;
 
             var oldValue = (parameter as Tuple<object, Brush>).Item2;
 
             int? index2 = null;
-            for (int i = 0; i < lbvm.ListViewModels.Count; i++)
-                if (oldValue == lbvm.ListViewModels[i].Fill)
+            for (int i = 0; i < lbvm.EllipseViewModels.Count; i++)
+                if (oldValue == lbvm.EllipseViewModels[i].Fill)
                     index2 = i;
 
             if (index != null)
             {
-                var prop = lbvm.ListViewModels[(int)index].GetType().GetProperty("Number");
+                var prop = lbvm.EllipseViewModels[(int)index].GetType().GetProperty("Number");
              prop.SetValue(null, (int)prop.GetValue(null) - 1);
 
             }
             
             if (index2 != null)
             {
-                var prop = lbvm.ListViewModels[(int)index2].GetType().GetProperty("Number");
+                var prop = lbvm.EllipseViewModels[(int)index2].GetType().GetProperty("Number");
                 prop.SetValue(null, (int)prop.GetValue(null) + 1);
 
             }

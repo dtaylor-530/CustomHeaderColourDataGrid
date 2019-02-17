@@ -35,12 +35,10 @@ namespace CustomHeaderColourDataGrid
         {
             ControlMatchCommandBehavior behavior = parameter as ControlMatchCommandBehavior;
 
-            var yt=behavior.ListBox.ItemContainerGenerator.ContainerFromItem(behavior.ListBox.SelectedItem) as RestrictedEllipseItem;
+            var rei = behavior.ListBox.ItemContainerGenerator.ContainerFromItem(behavior.ListBox.SelectedItem) as RestrictedEllipseItem;
 
-           // var yt = (behavior.ListBox.SelectedItem as RestrictedEllipse);
-           //if(behavior.ListBox.DataContext== yt?.RestrictedEllipse.DataContext)
-             (behavior.ContentTwo).Background = yt?.RestrictedEllipse.GetFill((behavior.ContentTwo).Background);
-            
+            (behavior.ContentTwo).Background = rei?.RestrictedEllipse.GetFill((behavior.ContentTwo).Background);
+
         }
     }
 }

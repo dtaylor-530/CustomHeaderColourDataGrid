@@ -16,7 +16,7 @@ namespace CustomHeaderColourDataGrid
         {
             base.OnApplyTemplate();
             ellipse = this.GetTemplateChild("Ellipse") as Ellipse;
-            ellipse.Fill = (Brush)MyProperty;
+            ellipse.Fill = (Brush)FillProperty;
         }
 
         static RestrictedEllipse()
@@ -70,32 +70,24 @@ namespace CustomHeaderColourDataGrid
 
 
 
-        public object MyProperty
+        public object FillProperty
         {
-            get { return (object)GetValue(MyPropertyProperty); }
-            set { SetValue(MyPropertyProperty, value); }
+            get { return (object)GetValue(FillPropertyProperty); }
+            set { SetValue(FillPropertyProperty, value); }
         }
 
 
-        public static readonly DependencyProperty MyPropertyProperty =            DependencyProperty.Register("MyProperty", typeof(object), typeof(RestrictedEllipse), new PropertyMetadata(Brushes.Beige, new PropertyChangedCallback(ds)));
+        public static readonly DependencyProperty FillPropertyProperty =            DependencyProperty.Register("FillProperty", typeof(object), typeof(RestrictedEllipse), new PropertyMetadata(Brushes.Beige, new PropertyChangedCallback(ds)));
 
 
 
-        //public object Fill
-        //{
-        //    get { return (object)GetValue(FillProperty); }
-        //    set { SetValue(FillProperty, value); }
-        //}
-        //public static readonly DependencyProperty FillProperty = DependencyProperty.Register("FillProperty", typeof(object), typeof(RestrictedEllipse), new PropertyMetadata(null, new PropertyChangedCallback(ds), new CoerceValueCallback(sddsf)));
 
-
-        public event EventHandler<EventArgs2> ButtonClick;
+        public event EventHandler<FillChangedEventArgs> FillChanged;
 
         public Brush GetFill(Brush value)
         {
-
-            ButtonClick?.Invoke(this, new EventArgs2 {DataContext=DataContext,OldValue=value});
-            return (Brush)MyProperty;
+           FillChanged?.Invoke(this, new FillChangedEventArgs {DataContext=DataContext,OldValue=value});
+            return (Brush)FillProperty;
         }
 
 

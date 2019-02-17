@@ -12,7 +12,7 @@ namespace CustomHeaderColourDataGrid
     {
         static DataGridEx()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(DataGridEx), new FrameworkPropertyMetadata(typeof(DataGridEx)));
+           // DefaultStyleKeyProperty.OverrideMetadata(typeof(DataGridEx), new FrameworkPropertyMetadata(typeof(DataGridEx)));
         }
 
         public object DropDownContent
@@ -22,6 +22,15 @@ namespace CustomHeaderColourDataGrid
         }
 
         public static readonly DependencyProperty DropDownContentProperty = DependencyProperty.Register("DropDownContent", typeof(object), typeof(DataGridEx), new PropertyMetadata(null,new PropertyChangedCallback(dd)));
+
+        public DataGridEx()
+        {
+            Uri resourceLocater = new Uri("/CustomHeaderColourDataGrid;component/Themes/SplitButtonColumnHeaderStyle.xaml", System.UriKind.Relative);
+            ResourceDictionary resourceDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocater);
+            ColumnHeaderStyle = resourceDictionary["SplitButtonColumnHeaderStyle"] as Style;
+          
+        }
+
 
         private static void dd(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

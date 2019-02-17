@@ -10,7 +10,7 @@ namespace CustomHeaderColourDataGrid
 {
     public class ListBoxViewModelBase
     {
-        public ObservableCollection<EllipseViewModelBase> ListViewModels { get; set; }
+        public IList<EllipseViewModelBase> EllipseViewModels { get; set; }
 
         public ICommand Command => new Command(this);
     }

@@ -46,30 +46,62 @@
             </Setter.Value>
         </Setter>-->
     </Style>
-    
+    <!--Background="{TemplateBinding Background}"
+                                                  Style="{StaticResource RectPlainButton}"
+                                                   BorderBrush="{TemplateBinding Foreground}"
+                                                  Foreground="{TemplateBinding Foreground}"
+                                                                                     Background="{TemplateBinding Background}"
+                                                  Style="{StaticResource RectPlainButton}"
+                                                   BorderBrush="{TemplateBinding Foreground}"
+                                                   Foreground="{TemplateBinding Foreground}"
+                                                  Content="{TemplateBinding Content}"         Content="{TemplateBinding Content}"-->
+
+
+
     <local:TransferColourCommand x:Key="tcc"></local:TransferColourCommand>
     <local:Converter x:Key="Converter"></local:Converter>
+
+
+    <!--<Style x:Key="splitbutton" TargetType="xctk:SplitButton">
+        <Setter Property="Background" Value="{TemplateBinding xctk:SplitButton.Background}"></Setter>
+        <Setter Property="BorderBrush" Value="{TemplateBinding xctk:SplitButton.Foreground}"></Setter>
+        <Setter Property="Foreground" Value="{TemplateBinding xctk:SplitButton.Foreground}"></Setter>
+        <Setter Property="Content" Value="{TemplateBinding xctk:SplitButton.Content}"></Setter>
+    </Style>-->
+    <!--Style="{StaticResource splitbutton}"-->
+    <!--<xctk:SplitButton x:Key="sbutton" x:Name="PART_DropDown" Grid.Column="1"   
+                         Background="{TemplateBinding xctk:SplitButton.Background}"
+                                                   BorderBrush="{TemplateBinding xctk:SplitButton.Foreground}"
+                                                   Foreground="{TemplateBinding xctk:SplitButton.Foreground}"
+                                                  Content="{TemplateBinding xctk:SplitButton.Content}"        
+                        DropDownContent="{Binding DropDownContent,RelativeSource={RelativeSource AncestorType=DataGrid}}">
+        <i:Interaction.Behaviors>
+            <local:ControlMatchCommandBehavior  ListBox="{Binding ElementName=PART_DropDown,Path=DropDownContent}" 
+                                                                            Command="{StaticResource tcc}" 
+                                                                            ContentTwo="{Binding RelativeSource={RelativeSource AncestorType=DataGridColumnHeader}}"/>
+
+
+        </i:Interaction.Behaviors>
+    </xctk:SplitButton>-->
+
+  
+    
     <Style x:Key="SplitButtonColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}" x:Shared="False" ><!--BasedOn="{StaticResource {x:Type DataGridColumnHeader}}"-->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
-                    <xctk:SplitButton x:Name="PART_DropDown" Grid.Column="1" 
-                                                  Background="{TemplateBinding Background}"
-                             
-                                                  Style="{StaticResource RectPlainButton}"
-                                                            BorderBrush="{TemplateBinding Foreground}"
-                                                            Foreground="{TemplateBinding Foreground}"
-                                     
-                                                  Content="{TemplateBinding Content}"              
-                                     
-                        DropDownContent="{Binding DropDownContent,RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource Converter}}">
-                        <!--<xctk:SplitButton.DropDownContent>
-                            <local:ColourListBox></local:ColourListBox>
-                        </xctk:SplitButton.DropDownContent>-->
+                    <!--<ContentControl Content="{StaticResource sbutton}">
+                      
+                    </ContentControl>-->
+                    <xctk:SplitButton  x:Name="PART_DropDown" Grid.Column="1"   
+                       Background="{TemplateBinding xctk:SplitButton.Background}"
+                                                   BorderBrush="{TemplateBinding xctk:SplitButton.Foreground}"
+                                                   Foreground="{TemplateBinding xctk:SplitButton.Foreground}"
+                                                  Content="{TemplateBinding xctk:SplitButton.Content}"        
+                        DropDownContent="{Binding DropDownContent,RelativeSource={RelativeSource AncestorType=DataGrid}}">
                         <i:Interaction.Behaviors>
                             <local:ControlMatchCommandBehavior  ListBox="{Binding ElementName=PART_DropDown,Path=DropDownContent}" 
                                                                             Command="{StaticResource tcc}" 
-                                                               
                                                                             ContentTwo="{Binding RelativeSource={RelativeSource AncestorType=DataGridColumnHeader}}"/>
 
 

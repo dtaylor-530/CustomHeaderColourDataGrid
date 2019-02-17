@@ -34,19 +34,19 @@ namespace CustomHeaderColourDataGrid
             set { SetValue(NumberProperty, value); }
         }
 
-        public static readonly DependencyProperty NumberProperty = DependencyProperty.Register("Number", typeof(int), typeof(RestrictedEllipseItem));
+        public static readonly DependencyProperty NumberProperty = DependencyProperty.Register("Number", typeof(int), typeof(RestrictedEllipseItem), new FrameworkPropertyMetadata(0,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         public RestrictedEllipse RestrictedEllipse { get; private set; }
 
-        public object MyProperty
+        public object FillProperty
         {
-            get { return (object)GetValue(MyPropertyProperty); }
-            set { SetValue(MyPropertyProperty, value); }
+            get { return (object)GetValue(FillPropertyProperty); }
+            set { SetValue(FillPropertyProperty, value); }
         }
 
 
-        public static readonly DependencyProperty MyPropertyProperty = DependencyProperty.Register("MyProperty", typeof(object), typeof(RestrictedEllipseItem),new PropertyMetadata(null,chng));
+        public static readonly DependencyProperty FillPropertyProperty = DependencyProperty.Register("FillProperty", typeof(object), typeof(RestrictedEllipseItem),new PropertyMetadata(null,chng));
 
         private static void chng(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

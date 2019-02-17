@@ -3,12 +3,12 @@
                     xmlns:local="clr-namespace:CustomHeaderColourDataGrid"
                     >
 
-    <ResourceDictionary.MergedDictionaries>
+    <!--<ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/CustomHeaderColourDataGrid;component/Themes/SplitButtonColumnHeaderStyle.xaml"></ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>
+    
     <Style  TargetType="{x:Type local:DataGridEx}" BasedOn="{StaticResource {x:Type DataGrid}}"  >
         <Setter Property="ColumnHeaderStyle" Value="{StaticResource SplitButtonColumnHeaderStyle}"/>
+    </Style>-->
 
-    </Style>
-    <!--x:Key="SplitButtonColumnHeaderStyle"-->
 </ResourceDictionary>

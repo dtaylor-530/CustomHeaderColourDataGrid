@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace CustomHeaderColourDataGrid
 {
-    public class EventArgs2 : EventArgs
+    public class FillChangedEventArgs : EventArgs
     {
         public object DataContext { get; set; }
         public Brush OldValue { get; set; }

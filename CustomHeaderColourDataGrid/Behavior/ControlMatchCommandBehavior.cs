@@ -60,14 +60,24 @@ namespace CustomHeaderColourDataGrid
 
         private void ListBoxChanged()
         {
+            DataGridColumn xx = null;
             (ListBox).SelectionChanged += (a, b) =>
             {
-                if (((dynamic)(ContentTwo)).DataContext == ((dynamic)VisualTreeHelper.GetParent(ListBox as ListBox)).DataContext)
+                var dgch = AssociatedObject.FindParent<DataGridColumnHeader>();
+                if (dgch.DisplayIndex > -1)
                 {
-                    (this as ControlMatchCommandBehavior).Command?.Execute(this);
-                    b.Handled = true;
+                    var lbdc = ListBox.FindParent<ContentPresenter>().DataContext;
+                    var c2dc = ContentTwo.DataContext;
+
+                    if (c2dc == lbdc)
+                    {
+                        (this as ControlMatchCommandBehavior).Command?.Execute(this);
+
+                        b.Handled = true;
+                    }
                 }
             };
+
 
         }
 
@@ -75,12 +85,14 @@ namespace CustomHeaderColourDataGrid
 
         public static readonly DependencyProperty CommandProperty = DependencyProperty.Register("Command", typeof(ICommand), typeof(ControlMatchCommandBehavior));
 
+ 
 
         protected override void OnAttached()
         {
 
         }
 
+     
     }
 
 

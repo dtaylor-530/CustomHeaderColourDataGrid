@@ -3,22 +3,22 @@
                     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                     xmlns:local="clr-namespace:CustomHeaderColourDataGrid"
              >
-    <Style TargetType="Ellipse" >
-     
-    </Style>
+
 
     <local:ViewViewModelConverter x:Key="Converter"></local:ViewViewModelConverter>
-    <!--x:Key="rei"-->
+
     <Style TargetType="{x:Type local:RestrictedEllipseItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}" x:Shared="False">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:RestrictedEllipseItem}">
                     <local:RestrictedEllipse x:Name="RestrictedEllipse" 
-                                             MyProperty="{Binding MyProperty,RelativeSource={RelativeSource TemplatedParent}}"
+                                             FillProperty="{Binding FillProperty,RelativeSource={RelativeSource TemplatedParent}}"
                                              Number="{Binding Number,RelativeSource={RelativeSource TemplatedParent}}">
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="ButtonClick" >
-                                <local:EventCommandExecuter Command="{Binding Path=DataContext.Command,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" EventArgsConverter="{StaticResource Converter}"/>
+                            <i:EventTrigger EventName="FillChanged" >
+                                <local:EventCommandExecuter 
+                                    Command="{Binding Path=DataContext.Command,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" 
+                                    EventArgsConverter="{StaticResource Converter}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </local:RestrictedEllipse>
@@ -40,7 +40,9 @@
                                 </Style>
                             </Ellipse.Style>
                         </Ellipse>                  
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Number,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                        <TextBlock VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"
+                                   Text="{Binding Number,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

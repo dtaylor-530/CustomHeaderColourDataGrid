@@ -12,7 +12,7 @@ namespace CustomHeaderColourDataGrid.DemoApp
     {
         public ListBoxViewModel()
         {
-            base.ListViewModels = new System.Collections.ObjectModel.ObservableCollection<EllipseViewModelBase>
+            base.EllipseViewModels = new System.Collections.ObjectModel.ObservableCollection<EllipseViewModelBase>
             {
                  new EllipseViewModel(),
                  new EllipseViewModel2(),

@@ -1,0 +1,14 @@
+﻿<ResourceDictionary
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   xmlns:local="clr-namespace:FancyGrid"
+   xmlns:dg="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+
+    <ResourceDictionary.MergedDictionaries>
+   
+        <ResourceDictionary Source="/FancyGrid;component/Themes/CustomComboBox.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/FancyGrid;component/Themes/DataGrid.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="/FancyGrid;component/Themes/ColumnHeader.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
+

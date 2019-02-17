@@ -66,12 +66,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\VisualTreeHelperEx.cs" />
+    <Compile Include="Deprecated\ContentExtender.cs" />
     <Compile Include="Behavior\AutoGeneratingColumnsBehavior.cs" />
     <Compile Include="Control\RestrictedEllipseItem.cs" />
     <Compile Include="Converter\Converter.cs" />
     <Compile Include="Converter\ViewModelViewConverter.cs" />
     <Compile Include="Control\DataGridEx.cs" />
-    <Compile Include="EventArgs\EllipseEventArgs.cs" />
+    <Compile Include="EventArgs\FillChangedEventArgs.cs" />
     <Compile Include="ViewModel\EllipseViewModelBase.cs" />
     <Compile Include="ViewModel\ListBoxViewModel.cs" />
     <Page Include="Themes\DataGridEx.xaml">
@@ -83,7 +85,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Behavior\EventCommandBehavior.cs" />
-    <Compile Include="Behavior\ListBoxSelectionChangedBehavior.cs" />
+    <Compile Include="Behavior\ControlMatchCommandBehavior.cs" />
     <Compile Include="Command\ColourTransferCommand.cs" />
     <Compile Include="Command\FillUpdateCommand.cs" />
     <Compile Include="Control\RestrictedEllipse.cs" />
