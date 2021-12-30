@@ -43,7 +43,7 @@ namespace FancyGridEx.DemoApp
 
         public EllipseViewModel2()
         {
-            Fill = Brushes.AliceBlue;
+            Fill = Brushes.DarkOliveGreen;
         }
 
         private static void RaisePropertyChanged([CallerMemberName] string name = "")

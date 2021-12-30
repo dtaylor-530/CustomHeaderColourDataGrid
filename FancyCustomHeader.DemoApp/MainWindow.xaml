@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FancyGridEx.DemoApp"
+        xmlns:vm="clr-namespace:FancyGridEx.DemoApp.ViewModel"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         xmlns:ex="clr-namespace:FancyGridEx;assembly=FancyGridEx"
@@ -13,7 +14,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ObjectDataProvider x:Key="Factory"
-                    ObjectType="{x:Type local:TestRowFactory}"
+                    ObjectType="{x:Type vm:TestRowFactory}"
                     MethodName="CreateMany">
                 <ObjectDataProvider.MethodParameters>
                     <sys:Int32>500</sys:Int32>
@@ -23,9 +24,6 @@
         </ResourceDictionary>
     </Window.Resources>
 
-
-
-
     <DockPanel>
         <ListBox  x:Name="Output" DockPanel.Dock="Left" Width="100" MinHeight="200">
             <ListBox.ItemTemplate>
@@ -33,12 +31,11 @@
                     <Grid>
                         <Rectangle Fill="{Binding Brush,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="20" Width="100"></Rectangle>
                         <TextBlock Text="{Binding Header}"></TextBlock>
-
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox DockPanel.Dock="Left" ItemsSource="{Binding ElementName=dataGrid1,Path=ColumnFilterModes}" MinHeight="100">
+        <ListBox DockPanel.Dock="Left" ItemsSource="{Binding ElementName=dataGrid1,Path=ColumnFilterModes}" MinWidth="200">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <UniformGrid>
@@ -57,7 +54,5 @@
                 <custom:ExtendendHeadersBehavior ColumnBrushes="{Binding ElementName=Output,Path=ItemsSource,Mode=OneWayToSource}"></custom:ExtendendHeadersBehavior>
             </i:Interaction.Behaviors>
         </ex:FilteringDataGridEx>
-
-        
     </DockPanel>
 </Window>

@@ -84,6 +84,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\EllipseViewModel.cs" />
     <Compile Include="ViewModel\ListBoxViewModel.cs" />
+    <Compile Include="ViewModel\TestRowFactory.cs" />
     <Compile Include="View\ColourListBox.xaml.cs">
       <DependentUpon>ColourListBox.xaml</DependentUpon>
     </Compile>
